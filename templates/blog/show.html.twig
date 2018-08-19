@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Article - {{article.id}} {% endblock %}
+
+{% block body %}
+
+	<article>
+   		<h4>{{ article.getTitle() }}</h4>
+   		<div className="metadata">{{ article.getCreatedAt().format('Y-m-d H:i:s') }}</div>
+   		<div className="content">
+   			<img src="{{ article.getImg() }}" alt=""/>
+   			
+   			{{ article.getContent()|raw }}
+   		</div>
+   	</article>
+
+{% endblock body %}

@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Articles{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Articles</h1>
+
+	{% for article in articles %}
+        
+	   	<article>
+	   		<h4>{{ article.getTitle() }}</h4>
+	   		<div className="metadata">{{ article.getCreatedAt().format('Y-m-d H:i:s') }}</div>
+	   		<div className="content">
+	   			<img src="{{ article.getImg() }}" alt=""/>
+	   			
+	   			{{ article.getContent()|raw }}
+	   			
+	   			<a href="{{ path('show', {'id':article.id}) }}" class="btn btn-primary">Voir plus</a>
+	   		</div>
+	   	</article>
+		<hr>
+    {% endfor %}
+    
+</div>
+{% endblock %}
